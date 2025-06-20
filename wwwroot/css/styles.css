@@ -1,0 +1,16 @@
+* {
+    padding: 1px;
+    margin-left: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.pre-styles {
+    display: block;
+    padding: 8px;
+    background: rgb(50, 50, 50);
+    color: whitesmoke;
+}

@@ -1,0 +1,11 @@
+# Build
+bin/
+obj/
+
+# Database
+*.db 
+*.db-journal
+
+*.vs 
+.vscode/
+appsettings.Development.json 

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index Page</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <main>
+        <section>
+            <h1>Documentation</h1>
+            <h2>Overview</h2>
+            <p>
+                The API allows users to interact with shared thoughts.<br />
+                You can retrieve, create, update, and delete thoughts.<br />
+                Additionally, it support image uploads.
+            </p>
+            <h3>REST</h3>
+            <p>
+                <strong>Base url: </strong>
+                <a href="http://localhost:5115/Thoughts" target="_blank">localhost:5115/Thoughts</a>
+            </p>
+        </section>
+
+        <section id=>
+            <div>
+                <h1>Endpoints</h1>
+                <h2>GET/Thought</h2>
+                <p>Retrieve all thoughts.</p>
+                <ul>
+                    <li>
+                        <strong>Request:</strong><br />
+                        <p>GET localhost:5115/Thought</p>
+                    </li>
+                    <li>
+                        <strong>Response:</strong>
+                        <p>200 OK</p>
+                    </li>
+                </ul>
+                <pre class="pre-styles">     
+        [
+            {
+                "id": <span style="color: red;">1</span>,
+                "thought": </span><span style="color: greenyellow;">"We Are Great!"</span>
+            }
+        ]
+                </pre>
+            </div>
+
+            <div>
+                <h2>GET/Thought{id}</h2>
+                <p>Retrieve thought by it's ID.</p>
+                <ul>
+                    <li>
+                        <strong>Request:</strong><br />
+                        <p>GET localhost:5115/Thought/{id}</p>
+                    </li>
+                    <li>
+                        <strong>Parameters:</strong>
+                        <p>id (integer)</p>
+                    </li>
+                    <li>
+                        <strong>Response:</strong>
+                        <p>200 OK</p>
+                    </li>
+                </ul>
+                <pre class="pre-styles">     
+        [
+            {
+                "id": <span style="color: red;">1</span>,
+                "thought": </span><span style="color: greenyellow;">"We Are Great!"</span>
+            }
+        ]
+                </pre>
+            </div>
+
+            <div>
+                <h2>GET/Trump/GetByThought/{thought}</h2>
+                <p>Retrieve thoughts by specific text.</p>
+            <ul>
+                <li>
+                    <strong>Request:</strong><br />
+                    <p>GET localhost:5115/Thought//GetByThought/{thought}</p>
+                </li>
+                <li>
+                    <strong>Parameters:</strong>
+                    <p>thought (string)</p>
+                </li>
+                <li>
+                    <strong>Response:</strong>
+                    <p>200 OK</p>
+                </li>
+            </ul>
+                <pre class="pre-styles">     
+        [
+            {
+                "id": <span style="color: red;">1</span>,
+                "thought": </span><span style="color: greenyellow;">"We Are Great!"</span>
+            }
+        ]
+                </pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>POST/Thought</h2>
+            <p>Create a new Trump thought.</p>
+            <ul>
+                <li>
+                    <strong>Request:</strong><br />
+                    <p>POST localhost:5115/Thought/</p>
+                </li>
+                <li>
+                    <strong>Request body:</strong>
+                </li>
+            </ul>
+            <pre class="pre-styles">    {"thought": <span style="color: greenyellow;">"Future"</span>}</code>
+            </pre>
+            <ul>
+                <li><strong>Response:</strong></li>
+                <p>200 OK</p>
+            </ul>     
+            <pre class="pre-styles">    {"id":<span style="color: red;">1</span>, "thought": </span><span style="color: greenyellow;">"Future"</span>}
+            </pre>
+        </section>
+
+        <section>
+            <h2>PUT/Thought</h2>
+            <p>Update an exsisting thought.</p>
+            <ul>
+                <li>
+                    <strong>Request:</strong><br />
+                    <p>PUT localhost:5115/Thought</p>
+                </li>
+                <li>
+                    <strong>Request body:</strong>
+                </li>
+            </ul>
+            <pre class="pre-styles">      {"thought":<span style="color: greenyellow;">"Let's have cozy weekend"</span>}
+            </pre>
+            <ul>
+                <li>
+                    <strong>Response:</strong>
+                    <p>200 OK</p>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>DELETE/Thought/{id}</h2>
+            <p>Delete thought.</p>
+            <ul>
+                <li>
+                    <strong>Request:</strong><br />
+                    <p>DELETE localhost:5115/Thought{id}</p>
+                </li>
+                <li>
+                    <strong>Parameters:</strong>
+                    <p>id (integer)</p>
+                </li>
+                <li>
+                    <strong>Response:</strong>
+                    <p>200 OK</p>
+                </li>
+            </ul>
+        </section>
+
+        
+        <section>
+            <h2>POST/UploadingImage</h2>
+            <p>Upload an image.</p>
+            <ul>
+                <li>
+                    <strong>Request:</strong><br />
+                    <p>POST localhost:5115/UploadImage</p>
+                </li>
+                <li>
+                    <strong>Parameters:</strong>
+                    <p>A file (image)</p>
+                </li>
+                <li>
+                    <strong>Response:</strong>
+                    <p>200 OK</p>
+                </li>
+            </ul>
+        </section>
+    <footer>
+      <p>&copy; 2024 Your Company. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
