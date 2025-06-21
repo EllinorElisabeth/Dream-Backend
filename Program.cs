@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Dream.Data;
-using Dream.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,10 +36,11 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllers();
 
-// TEST DB-tilgang
-app.MapGet("/testdb", async (DreamDbContext db) =>
+var port = Environment.GetEnvironmentVariable("PORT");
+
+if (port != null)
 {
-    return await db.Thoughts.ToListAsync();
-});
+    app.Urls.Add($"https://*:{port}");
+}
 
 app.Run();
