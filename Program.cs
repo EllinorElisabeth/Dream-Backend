@@ -10,7 +10,6 @@ builder.Services.AddDbContext<DreamDbContext>(options =>
     options.UseNpgsql(connectionString)
 );
 
-
 builder.Services.AddCors(
     options => {
         options.AddPolicy("AllowAnyOrigin",
@@ -44,7 +43,7 @@ app.MapControllers();
 var port = Environment.GetEnvironmentVariable("PORT");
 if (port != null)
 {
-    app.Urls.Add($"https://*:{port}");
+    app.Urls.Add($"http://*:{port}");
 }
 
 app.Run();
