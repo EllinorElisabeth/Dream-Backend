@@ -1,25 +1,23 @@
 using Microsoft.EntityFrameworkCore;
 using Dream.Data;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
 
 builder.Services.AddDbContext<DreamDbContext>(options =>
-    //options.UseSqlite( "Data Source=Dream.db" ));
     options.UseNpgsql(connectionString)
 );
 
-builder.Services.AddCors(
-    options => {
-        options.AddPolicy("AllowAnyOrigin",
-        policies => 
-        policies
-            .AllowAnyOrigin()
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontendOrigin", policy =>
+    {
+        policy
+            .WithOrigins("https://ellinorelisabeth.github.io")
             .AllowAnyMethod()
-            .AllowAnyHeader());
-    }
-);
+            .AllowAnyHeader();
+    });
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -27,16 +25,19 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseCors("AllowFrontendOrigin");
+
 app.UseDefaultFiles();
 app.UseStaticFiles();
-app.UseCors("AllowAnyOrigin");
-
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Test endepunkt
+app.MapGet("/test", () => "Backend is alive!");
 
 app.MapControllers();
 
