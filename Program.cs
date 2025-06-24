@@ -1,10 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using Dream.Data;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
 
-builder.Services.AddDbContext<DreamDbContext>( options =>
-options.UseSqlite( "Data Source=Dream.db" )); 
+builder.Services.AddDbContext<DreamDbContext>(options =>
+    //options.UseSqlite( "Data Source=Dream.db" ));
+    options.UseNpgsql(connectionString)
+);
+
 
 builder.Services.AddCors(
     options => {
@@ -37,7 +42,6 @@ if (app.Environment.IsDevelopment())
 app.MapControllers();
 
 var port = Environment.GetEnvironmentVariable("PORT");
-
 if (port != null)
 {
     app.Urls.Add($"https://*:{port}");
